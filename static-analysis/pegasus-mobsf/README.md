@@ -38,17 +38,43 @@ Add confirmed findings here, including the relevant MobSF category and the evide
 
 ## Evidence and Screenshots
 
-Please upload the following evidence to this folder. If a screenshot contains multiple findings, we can use it in more than one relevant section rather than uploading duplicates.
+The following screenshots document the MobSF results reviewed during this static-analysis exercise.
 
-| Suggested filename | What it should show |
-|---|---|
-| `P2-01-MobSF-Scan-Overview.png` | MobSF scan overview and application identification. |
-| `P2-02-App-Information.png` | Package name, version, SDK information, and other app metadata. |
-| `P2-03-Permissions.png` | Permissions reported by MobSF. |
-| `P2-04-Broadcast-Receivers.png` | The receiver declarations and their exact names. |
-| `P2-05-Manifest-Components.png` | Activities, services, providers, and other manifest components, if shown. |
-| `P2-06-Security-Findings.png` | MobSF security findings and severity labels. |
-| `P2-07-Code-or-Strings-Evidence.png` | Any code or strings evidence that supports a specific finding. |
+### 1. Application overview
+
+![MobSF application overview](01_MobSF_Application_Overview.png)
+
+### 2. File and application components
+
+![MobSF file and app component overview](02_MobSF_File_App_Component_Overview.png)
+
+### 3. Permissions: location and identity
+
+![MobSF location and identity permissions](03_MobSF_Permissions_Location_And_Identity.png)
+
+### 4. Permissions: camera and call access
+
+![MobSF camera and call-access permissions](04_MobSF_Permissions_Camera_And_Call_Access.png)
+
+### 5. Permissions: SMS, boot and audio
+
+![MobSF SMS, boot and audio permissions](05_MobSF_Permissions_SMS_Boot_And_Audio.png)
+
+### 6. Permissions: contacts and system access
+
+![MobSF contacts and system-access permissions](06_MobSF_Permissions_Contacts_And_System_Access.png)
+
+### 7. Manifest and exported-component findings
+
+![MobSF manifest and exported-component findings](07_MobSF_Manifest_And_Exported_Component_Findings.png)
+
+### 8. Code behaviour and abused permissions
+
+![MobSF code behaviour and abused permissions](08_MobSF_Code_Behaviour_And_Abused_Permissions.png)
+
+### 9. Malware and common-permission mapping
+
+![MobSF malware and common-permission mapping](09_MobSF_Malware_And_Common_Permission_Mapping.png)
 
 ## Limitations
 
