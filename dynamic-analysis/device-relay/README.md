@@ -4,6 +4,8 @@
 
 This case study documents a controlled dynamic assessment of the Device Relay Android application. The review focused on observing service behaviour, diagnostic requests, and network traffic from an Android emulator, with Burp Suite Community Edition used to inspect HTTP(S) traffic.
 
+![Device Relay running in the Android emulator](D2-01-Emulator-App-Running.png)
+
 ## Analysis Environment
 
 - Host operating system: Windows 11
@@ -30,15 +32,25 @@ This case study documents a controlled dynamic assessment of the Device Relay An
 5. Reviewed the application's diagnostic console and the commands it queued.
 6. Stopped the application service and observed the resulting change in activity.
 
+### Service startup
+
+The application service was started in the emulator before the diagnostic and network observations were collected.
+
+![Device Relay service started](D2-03-Device-Relay-Service-Started.png)
+
 ## Observations
 
 ### 1. Proxy connectivity
 
 The WebView Browser Tester proxy check generated requests to `http://neverssl.com`. Burp captured requests for `/` and `/online`, both returning HTTP 200. This confirmed that the emulator's browser traffic was reaching the configured proxy.
 
+![Burp Suite proxy connectivity check](D2-02-Burp-Proxy-Connectivity.png)
+
 ### 2. Application network traffic
 
 The application generated HTTPS requests to a `workers.dev` backend. Some observed responses returned **200 OK**, while others returned **401 Unauthorized**. The response codes were recorded as observed; the reason for the 401 responses was not independently established.
+
+![Observed Device Relay service network traffic](D2-04-Service-Network-Traffic.png)
 
 ### 3. Diagnostic console
 
@@ -52,13 +64,11 @@ The Device Relay console exposed diagnostic commands including:
 
 These commands were visible in the diagnostic interface during the session.
 
+![Console pairing and device information](D2-05-Console-Pairing-and-Device-Information.png)
+
 ### 4. Service stop behaviour
 
 After the service was stopped through the application interface, the service status changed to stopped. A subsequent device-state request showed that the observed activity had stopped.
-
-### 5. Scope limitations
-
-The notification Stop action was unavailable during the test. Device ownership and behaviour outside the controlled test session were not independently assessed.
 
 ## Results and Interpretation
 
@@ -66,18 +76,9 @@ The assessment confirmed that the emulator proxy configuration was working and t
 
 The captured status codes are observations, not proof of the cause of a request failure. No conclusion is made about behaviour beyond the tested emulator session.
 
-## Evidence and Screenshots
+## Scope Limitations
 
-Upload the screenshots listed below to this folder. After upload, the image links will be added at the relevant points in this report.
-
-| Suggested filename | What it should show |
-|---|---|
-| `D1-01-Emulator-App-Running.png` | Device Relay running in the Android emulator. |
-| `D1-02-Burp-Proxy-Check.png` | Burp capture showing the browser connectivity check and HTTP 200 responses. |
-| `D1-03-Application-HTTPS-Traffic.png` | Burp history showing the observed application HTTPS requests and response codes. |
-| `D1-04-Diagnostic-Console.png` | Device Relay console showing the diagnostic commands. |
-| `D1-05-Service-Stopped.png` | Console or application view showing the service stopped. |
-| `D1-06-Final-Traffic-Observation.png` | Evidence of the final observation after the service was stopped, if available. |
+The notification Stop action was unavailable during the test. Device ownership and behaviour outside the controlled test session were not independently assessed.
 
 ## Conclusion
 
