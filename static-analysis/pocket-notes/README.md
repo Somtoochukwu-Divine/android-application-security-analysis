@@ -33,17 +33,25 @@ This case study documents a static security review of the Android application pa
 
 The application contains a hardcoded arithmetic access-code check. The value could be recovered through static code inspection; the recovered value was **4831**.
 
+![JADX-GUI evidence of the client-side access-code logic](P1-01-UnlockPolicy-AccessCode.png)
+
 ### 2. Activity logging
 
 The `PreviewActivity` implementation logs note content under the tag `PocketNotesLab`. Logging sensitive user-entered content can expose information through device logs.
+
+![PreviewActivity note-content logging evidence](P1-03-PreviewActivity-Logging.png)
 
 ### 3. Exported activity
 
 The manifest declares `PreviewActivity` as exported without a manifest-level permission restriction. Exported components should be reviewed to determine whether they can be invoked by other applications and whether appropriate access controls are enforced.
 
+![Android manifest component configuration](P1-05-Manifest-Components.png)
+
 ### 4. Local storage
 
 The application stores note content in SharedPreferences named `pocket_notes`, using the key `note`. The preferences are held in the application's private sandbox. No application-level encryption was identified during this review.
+
+![SharedPreferences note-storage implementation](P1-02-NoteStore-Storage.png)
 
 ### 5. Embedded endpoint
 
@@ -52,6 +60,8 @@ A Base64-encoded configuration value resolves to:
 `https://telemetry.example.invalid/v1/sync`
 
 The sync functionality was disabled during the review. The presence of this string alone does not demonstrate that the endpoint was contacted.
+
+![Embedded configuration and training markers](P1-04-LabConfig-Training-Markers.png)
 
 ## Security Considerations
 
@@ -64,18 +74,6 @@ The sync functionality was disabled during the review. The presence of this stri
 ## Limitations
 
 This was a static review. No claim is made that the application contacted the embedded endpoint or that runtime exploitation was performed.
-
-## Evidence and Screenshots
-
-Add the screenshots listed below to this folder. The image links will be inserted into this report after the files are uploaded.
-
-| Planned filename | What it should show |
-|---|---|
-| `P1-01-UnlockPolicy-AccessCode.png` | JADX-GUI code showing the client-side access-code logic and recovered value. |
-| `P1-02-NoteStore-Storage.png` | Code showing SharedPreferences name and note key. |
-| `P1-03-PreviewActivity-Logging.png` | The note-content logging statement and log tag. |
-| `P1-04-LabConfig-Endpoint.png` | The encoded configuration and the decoded placeholder endpoint, if both are visible in your evidence. |
-| `P1-05-Manifest-Components.png` | Manifest view showing the exported activity and relevant component attributes. |
 
 ## Conclusion
 
