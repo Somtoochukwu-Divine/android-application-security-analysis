@@ -4,9 +4,9 @@ A practical collection of Android application security assessments covering reve
 
 ## Project Scope
 
-- **Pocket Notes — Static Analysis:** APK inspection, manifest and activity review, local storage, logging behaviour, and embedded configuration.
-- **Device Relay — Dynamic Analysis:** observation of application behaviour in an Android emulator, including service activity, diagnostic requests, and network traffic captured during testing.
-- **Pegasus — MobSF Static Analysis:** a MobSF-based review of an APK examined during a mobile application security exercise. The name identifies the analysis exercise; it is not a claim that the sample was verified as the Pegasus spyware product.
+- [**Pocket Notes — Static Analysis**](static-analysis/pocket-notes/README.md): APK inspection, manifest and activity review, local storage, logging behaviour, and embedded configuration.
+- [**Device Relay — Dynamic Analysis**](dynamic-analysis/device-relay/README.md): observation of application behaviour in an Android emulator, including service activity, diagnostic requests, and network traffic captured during testing.
+- [**Pegasus — MobSF Static Analysis**](static-analysis/pegasus-mobsf/README.md): a MobSF-based review of an APK examined during a mobile application security exercise. The name identifies the analysis exercise; it is not a claim that the sample was verified as the Pegasus spyware product.
 
 ## Tools and Environment
 
